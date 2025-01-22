@@ -1,4 +1,3 @@
-# Use official PHP-FPM image for optimized PHP processing
 FROM php:8.2-fpm
 
 # Set working directory
@@ -12,7 +11,13 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     procps \
     vim \
-    && docker-php-ext-install pdo pdo_pgsql
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libzip-dev \
+    libicu-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo pdo_pgsql gd zip intl # Added intl here
 
 # Install Composer globally
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -20,7 +25,8 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Copy the application code
 COPY . .
 
-RUN composer install --no-interaction --optimize-autoloader
+# Copy the custom PHP configuration
+COPY php.ini /usr/local/etc/php/php.ini
 
 # Copy existing application directory permissions
 COPY --chown=www-data:www-data . /var/www

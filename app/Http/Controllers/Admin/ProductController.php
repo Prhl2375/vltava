@@ -1,8 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+declare(strict_types=1);
+
+namespace App\Http\Controllers\Admin;
 
 use App\Domains\Product\Models\Product;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -10,10 +15,9 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Collection
     {
-        $product = Product::all()->where('is_active', true);
-        return Product::all()->where('is_active', true);
+        return Product::all();
     }
 
     /**
@@ -27,8 +31,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
-    {
+    public function show(Product $product) {
         //
     }
 
@@ -46,5 +49,12 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function import(Request $request):JsonResponse{
+        return new JsonResponse([
+            'success' => true,
+            'message' => 'spreadsheet import is successfull'
+        ], 201);
     }
 }
