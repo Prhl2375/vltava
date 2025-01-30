@@ -1,9 +1,9 @@
-@extends('frontend.layouts.app')
+@extends('site.layouts.main')
 @section('title') Vltava
 @endsection
 @section('content')
     <section id="content">
-        vltava
+        <h1>Vltava</h1>
     </section>
 @endsection
 @section('footer')
