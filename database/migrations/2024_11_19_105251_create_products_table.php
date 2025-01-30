@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->integer('price')->nullable();
+            $table->float('price')->nullable();
             $table->integer('stock')->nullable();
             $table->text('description')->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->boolean('enabled')->default(true);
             $table->timestamps();
 
             $table->unique('slug');
