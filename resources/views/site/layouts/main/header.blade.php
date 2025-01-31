@@ -1,5 +1,20 @@
 <header class="header">
-    <div class="logo">
+    <div class="header__logo">
         Logo
+    </div>
+    <div class="header__right">
+        <div class="header__button">
+            <a href="#">
+                Аккаунт
+            </a>
+        </div>
+        <div class="header__button">
+            <a href="#">
+                Меню
+            </a>
+        </div>
+        <div class="header__dropdown">
+            UA▼
+        </div>
     </div>
 </header>

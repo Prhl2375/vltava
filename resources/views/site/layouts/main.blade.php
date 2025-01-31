@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'My Website')</title>
-    <link rel="stylesheet" href="{{ asset('sass/main.scss') }}">
+    @vite('resources/sass/main.scss')
     @stack('styles') <!-- For additional styles in specific pages -->
 </head>
 

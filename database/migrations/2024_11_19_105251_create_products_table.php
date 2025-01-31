@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unique('slug');
 
             $table->index('name');
-            $table->index('is_active');
+            $table->index('enabled');
         });
     }
 
