@@ -1,0 +1,12 @@
+.separator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-line {
+        width: 500px;
+        height: 5px;
+        background: rgb(13, 87, 51);
+    }
+}

@@ -3,7 +3,7 @@
         Logo
     </div>
     <div class="header__right">
-        <div class="header__button">
+        <div class="header__button no-border">
             <a href="#">
                 Аккаунт
             </a>

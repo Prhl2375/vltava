@@ -7,6 +7,10 @@ export default defineConfig({
             input: [
                 'resources/sass/main.scss',
                 'resources/sass/components/banner.scss',
+                'resources/sass/components/separator.scss',
+                'resources/sass/pages/home.scss',
+
+
                 'resources/js/components/banner.js',
             ],
             refresh: true,
