@@ -8,6 +8,7 @@
     </section>
     <section class="container">
         <x-separator title="DA СМАЧНО!" />
+        <x-grid />
     </section>
 @endsection
 @push('styles')

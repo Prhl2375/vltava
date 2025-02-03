@@ -1,20 +1,20 @@
 <header class="header">
     <div class="header__logo">
-        Logo
+        <img src="{{ asset('images/logo.png') }}" alt="Logo">
     </div>
     <div class="header__right">
         <div class="header__button no-border">
             <a href="#">
-                Аккаунт
+                <h3>Аккаунт</h3>
             </a>
         </div>
         <div class="header__button">
             <a href="#">
-                Меню
+                <h3>Меню</h3>
             </a>
         </div>
         <div class="header__dropdown">
-            UA▼
+            <h3>UA▼</h3>
         </div>
     </div>
 </header>

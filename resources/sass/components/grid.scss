@@ -1,0 +1,20 @@
+.grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    &-row {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding-top: 25px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.product-card {
+    margin-right: 25px;
+}

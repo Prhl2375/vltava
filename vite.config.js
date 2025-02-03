@@ -8,6 +8,8 @@ export default defineConfig({
                 'resources/sass/main.scss',
                 'resources/sass/components/banner.scss',
                 'resources/sass/components/separator.scss',
+                'resources/sass/components/grid.scss',
+                'resources/sass/components/product-card.scss',
                 'resources/sass/pages/home.scss',
 
 
