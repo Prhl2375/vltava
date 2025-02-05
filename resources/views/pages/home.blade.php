@@ -15,6 +15,7 @@
             </x-vltava-button>
         </x-vltava-separator>
         @include('components.vltava-service')
+        <x-vltava-separator />
     </div>
 @endsection
 @push('styles')
