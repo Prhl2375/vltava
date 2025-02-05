@@ -11,13 +11,13 @@
 
 <body>
 
-    @include('layouts.main.header') <!-- Include the header -->
+    @include('layouts.main.vltava-header') <!-- Include the header -->
 
     <main>
         @yield('content') <!-- Dynamic content -->
     </main>
 
-    @include('layouts.main.footer') <!-- Include the footer -->
+    @include('layouts.main.vltava-footer') <!-- Include the footer -->
 
     @stack('scripts') <!-- For additional scripts in specific pages -->
 </body>

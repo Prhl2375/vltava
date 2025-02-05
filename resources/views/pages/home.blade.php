@@ -3,13 +3,19 @@
     Vltava
 @endsection
 @section('content')
-    <section>
-        @include('components.banner')
-    </section>
-    <section class="container">
-        <x-separator title="DA СМАЧНО!" />
-        <x-grid />
-    </section>
+    @include('components.vltava-banner')
+    <div class="container">
+        <x-vltava-separator>
+            <h3>DA СМАЧНО!</h3>
+        </x-vltava-separator>
+        <x-vltava-grid />
+        <x-vltava-separator>
+            <x-vltava-button>
+                <h3>Більше страв</h3>
+            </x-vltava-button>
+        </x-vltava-separator>
+        @include('components.vltava-service')
+    </div>
 @endsection
 @push('styles')
     @vite('resources/sass/pages/home.scss')
