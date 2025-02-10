@@ -1,0 +1,37 @@
+@use 'sass:map';
+
+$breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);
+
+$container-widths: (
+    xs: 100%,
+    // Full width for extra small screens
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px
+);
+
+@mixin container {
+    width: 100%;
+    max-width: map.get($container-widths, xs); // Default for small screens
+    margin: 0 auto;
+    padding: 0 15px; // Prevents touching screen edges
+
+    @each $breakpoint, $width in $container-widths {
+        @media (min-width: map.get($breakpoints, $breakpoint)) {
+            max-width: $width;
+        }
+    }
+}
+
+.container {
+    @include container;
+}

@@ -9,6 +9,6 @@ class SiteController extends Controller
 {
     public function indexAction(): View
     {
-        return view('site.pages.home');
+        return view('pages.home');
     }
 }

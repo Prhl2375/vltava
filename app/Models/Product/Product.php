@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Product;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -15,4 +16,8 @@ class Product extends Model
         'description',
         'price'
     ];
+    public function images(): HasMany
+    {
+        return $this->hasMany(ProductImage::class);
+    }
 }

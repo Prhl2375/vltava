@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Product;
+use App\Models\Product\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,7 +26,7 @@ class ProductFactory extends Factory
             'price' => fake()->numberBetween(100, 10000),
             'stock' => fake()->numberBetween(0, 100),
             'description' => fake()->paragraphs(3, true),
-            'is_active' => fake()->boolean(80), // 80% chance of being true
+            'enabled' => fake()->boolean(80), // 80% chance of being true
             'created_at' => fake()->dateTimeBetween('-1 year'),
             'updated_at' => function (array $attributes) {
                 return fake()->dateTimeBetween($attributes['created_at']);

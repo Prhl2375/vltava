@@ -1,1 +1,13 @@
-@use 'main/header';
+@use 'main/vltava-header';
+@use 'main/vltava-footer';
+@use 'components/vltava-button.scss';
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    margin: 10px;
+}
