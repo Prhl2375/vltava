@@ -5,7 +5,7 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\ProductResource\Pages;
 use App\Filament\Admin\Resources\ProductResource\RelationManagers;
 use App\Imports\ProductsImport;
-use App\Models\Product;
+use App\Models\Product\Product;
 use Filament\Actions\CreateAction;
 use Filament\Facades\Filament;
 use Filament\Forms;

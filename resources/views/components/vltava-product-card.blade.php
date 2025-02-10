@@ -6,7 +6,7 @@
             - includes <br>
             - tasty <br>
             - something <br>
-            Вага: як мама ярика
+            Вага: як ярик
         </div>
         <div class="vltava-product-card-button">
             price$
