@@ -4,13 +4,13 @@
     </div>
     <div class="vltava-header__right">
         <x-vltava-button>
-            <h3>Аккаунт</h3>
+            Аккаунт
         </x-vltava-button>
         <x-vltava-button>
-            <h3>Меню</h3>
+            Меню
         </x-vltava-button>
         <div class="vltava-header__dropdown">
-            <h3>UA▼</h3>
+            UA▼
         </div>
     </div>
 </header>

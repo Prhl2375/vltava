@@ -49,6 +49,14 @@
 
                 .vltava-button {
                     margin: 0;
+                    font-size: 24px;
+
+
+                    &-content {
+                        padding: 5px;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                    }
                 }
             }
         }
