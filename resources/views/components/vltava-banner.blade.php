@@ -1,10 +1,17 @@
 <div class="vltava-banner">
     <div class="swiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="{{ Storage::url('images/banner1.jpg') }}" alt="Slide 1"></div>
-            <div class="swiper-slide"><img src="{{ Storage::url('images/banner2.jpg') }}" alt="Slide 2"></div>
-            <div class="swiper-slide"><img src="{{ Storage::url('images/banner3.jpg') }}" alt="Slide 3"></div>
-            <div class="swiper-slide"></div>
+            @foreach ($banners as $banner)
+                <div class="swiper-slide">
+                    <img class="swiper-slide-image-desktop" src="{{ Storage::url($banner['desktop_image']) }}"
+                        alt="{{ $banner['mobile_image'] }}">
+                    <img class="swiper-slide-image-mobile" src="{{ Storage::url($banner['mobile_image']) }}"
+                        alt="{{ $banner['mobile_image'] }}">
+                    <div class="swiper-slide-content">
+                        {!! $banner['text'] !!}
+                    </div>
+                </div>
+            @endforeach
         </div>
         <!-- Optional Navigation -->
         <div class="swiper-button-prev"></div>

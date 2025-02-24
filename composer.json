@@ -15,7 +15,9 @@
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "maatwebsite/excel": "^3.1.62"
+        "maatwebsite/excel": "^3.1.62",
+        "spatie/eloquent-sortable": "^4.4",
+        "spatie/laravel-sluggable": "^3.7"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.14",
