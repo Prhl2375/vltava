@@ -3,11 +3,53 @@
         width: 100%;
         height: 70vh;
 
+        @media (max-width: 768px) {
+            height: 480px;
+        }
 
-        &-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+
+        &-slide {
+            &-image {
+                &-mobile {
+                    display: none;
+
+                    @media (max-width: 768px) {
+                        display: block;
+                    }
+                }
+
+                &-desktop {
+                    display: block;
+
+                    @media (max-width: 768px) {
+                        display: none;
+                    }
+                }
+            }
+
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            &-content {
+                position: absolute;
+                top: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+                background: none;
+                width: 100%;
+                height: 100%;
+
+
+                .vltava-button {
+                    margin: 0;
+                }
+            }
         }
 
         &-button-prev,

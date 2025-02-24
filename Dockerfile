@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libicu-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_pgsql gd zip intl # Added intl here
+    && docker-php-ext-install pdo pdo_pgsql gd zip intl
 
 #RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash \
 #    && . ~/.nvm/nvm.sh \

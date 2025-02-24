@@ -3,7 +3,9 @@
     Vltava
 @endsection
 @section('content')
-    @include('components.vltava-banner')
+    <section class="hero">
+        @include('components.vltava-banner')
+    </section>
     <div class="container">
         <x-vltava-separator>
             <h3>DA СМАЧНО!</h3>
