@@ -11,10 +11,11 @@
             <h3>DA СМАЧНО!</h3>
         </x-vltava-separator>
         <x-vltava-grid />
+        <x-vltava-button>
+            Більше страв
+        </x-vltava-button>
         <x-vltava-separator>
-            <x-vltava-button>
-                Більше страв
-            </x-vltava-button>
+            <h3>СЕРВІС</h3>
         </x-vltava-separator>
         @include('components.vltava-service')
         <x-vltava-separator />

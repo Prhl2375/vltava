@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('mobile_image');
             $table->string('desktop_image');
-            $table->text('text');
+            $table->text('text')->nullable();
             $table->integer('order');
             $table->timestamps();
         });
