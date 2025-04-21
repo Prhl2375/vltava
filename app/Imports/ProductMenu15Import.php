@@ -21,7 +21,6 @@ class ProductMenu15Import implements ToCollection
             if($row[2]){
                 Product::create([
                     'name' => $row[1],
-                    'slug' => Str::slug($row[1]),
                     'price' => $price,
                 ]);
             }
