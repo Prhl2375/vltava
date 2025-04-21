@@ -6,16 +6,22 @@ use App\Filament\Admin\Resources\ProductResource\Pages;
 use App\Filament\Admin\Resources\ProductResource\RelationManagers;
 use App\Imports\ProductsImport;
 use App\Models\Product\Product;
+use App\Models\Product\ProductCategory;
 use Filament\Actions\CreateAction;
 use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -39,6 +45,17 @@ class ProductResource extends Resource
                 TextInput::make('slug')
                     ->required(),
                 TextInput::make('description'),
+                TextInput::make('price'),
+                Select::make('category_id')
+                    ->options(ProductCategory::all()->pluck('name', 'id')),
+                Repeater::make('images')
+                    ->relationship()
+                    ->schema([
+                        FileUpload::make('image')
+                            ->directory('images/products')
+                            ->image(),
+                    ]),
+                Toggle::make('enabled'),
             ]);
     }
 
@@ -72,13 +89,19 @@ class ProductResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->limit(35),
+                TextColumn::make('slug'),
+                TextColumn::make('category.name')
+                    ->limit(25),
                 TextColumn::make('description')
                     ->limit(25),
-                TextColumn::make('price')
+                TextColumn::make('price'),
+                IconColumn::make('enabled')
+                    ->boolean(),
             ])
             ->filters([
-                //
-            ])
+                Tables\Filters\SelectFilter::make('category_id')
+                    ->options(ProductCategory::all()->pluck('name', 'id')),
+            ], layout: Tables\Enums\FiltersLayout::AboveContent)
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
