@@ -10,7 +10,7 @@
         <x-vltava-separator>
             <h3>DA СМАЧНО!</h3>
         </x-vltava-separator>
-        <x-vltava-grid />
+        <x-vltava-grid :products="$products"/>
         <x-vltava-button>
             Більше страв
         </x-vltava-button>

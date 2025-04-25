@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_recommendations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained(table: 'products');
+            $table->foreignId('product_id')->unique()->constrained(table: 'products');
             $table->boolean('enabled')->default(true);
             $table->integer('order');
             $table->timestamps();
