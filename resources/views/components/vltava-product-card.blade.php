@@ -1,12 +1,12 @@
 <a href="#" class="vltava-product-card">
     <div class="vltava-product-card-content">
-        <img src="{{ asset('images/genericFood.jpeg') }}" alt="" class="vltava-product-card-image">
+        <img src="{{ Storage::url($product["image"]) }}" alt="" class="vltava-product-card-image">
         <h3 class="vltava-product-card-title">{{$product['name']}}</h3>
         <div class="vltava-product-card-description">
             {{$product['description']}}
         </div>
         <div class="vltava-product-card-button">
-            {{$product['price']}}
+            {{$product['price']}}₴
         </div>
     </div>
 </a>

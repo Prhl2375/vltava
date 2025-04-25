@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Product\ProductImage;
 use App\Models\Product\ProductRecommendation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
@@ -19,6 +20,13 @@ class SiteController extends Controller
             ->orderBy("product_recommendations.order")
             ->select("products.*")
             ->get();
+        foreach($products as $product){
+            $product['image'] = ProductImage
+                ::where("product_id", "=", $product['id'])
+                ->where("main", "=", true)
+                ->select("image")
+                ->first()["image"];
+        }
         foreach($banners as $banner){
             $banner['text'] = Blade::render($banner['text']);
         }
