@@ -54,6 +54,7 @@ class ProductResource extends Resource
                         FileUpload::make('image')
                             ->directory('images/products')
                             ->image(),
+                        Toggle::make('main')
                     ]),
                 Toggle::make('enabled'),
             ]);

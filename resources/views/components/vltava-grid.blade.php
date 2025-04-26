@@ -1,12 +1,7 @@
 <div class="vltava-grid">
-    <x-vltava-product-card />
-    <x-vltava-product-card />
-    <x-vltava-product-card />
-    <x-vltava-product-card />
-    <x-vltava-product-card />
-    <x-vltava-product-card />
-    <x-vltava-product-card />
-    <x-vltava-product-card />
+    @foreach($products as $product)
+        <x-vltava-product-card :product="$product"/>
+    @endforeach
 </div>
 @push('styles')
     @vite('resources/sass/components/vltava-grid.scss')
