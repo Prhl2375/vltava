@@ -1,3 +1,9 @@
+@mixin image-base{
+    width: 90%;
+    height: 35%;
+    margin-top: 5%;
+    border-radius: 10px;
+}
 .vltava-product-card {
     text-decoration: none;
     color: black;
@@ -25,10 +31,16 @@
 
 
     &-image {
-        width: 90%;
-        height: 35%;
-        margin-top: 5%;
-        border-radius: 10px;
+        @include image-base;
+
+        &-placeholder {
+            @include image-base;
+            background-color: lightgray;
+            display: flex;
+            color: white;
+            font-size: 45px;
+            font-weight: 900;
+        }
     }
 
     &-title {

@@ -43,9 +43,8 @@ class ProductResource extends Resource
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('slug')
-                    ->required(),
+                    ->label('Slug(optional, generated automatically if left empty)'),
                 TextInput::make('description'),
-                TextInput::make('price'),
                 Select::make('category_id')
                     ->options(ProductCategory::all()->pluck('name', 'id')),
                 Repeater::make('images')
@@ -56,7 +55,21 @@ class ProductResource extends Resource
                             ->image(),
                         Toggle::make('main')
                     ]),
-                Toggle::make('enabled'),
+                Repeater::make('variants')
+                    ->relationship()
+                    ->schema([
+                        TextInput::make('name')
+                            ->required(),
+                        TextInput::make('price')
+                            ->required()
+                            ->numeric(),
+                        TextInput::make('weight')
+                            ->integer(),
+                        TextInput::make('volume')
+                            ->numeric(),
+                    ]),
+                Toggle::make('enabled')
+                    ->default(true),
             ]);
     }
 
@@ -95,7 +108,7 @@ class ProductResource extends Resource
                     ->limit(25),
                 TextColumn::make('description')
                     ->limit(25),
-                TextColumn::make('price'),
+                TextColumn::make('prices'),
                 IconColumn::make('enabled')
                     ->boolean(),
             ])

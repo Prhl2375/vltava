@@ -14,19 +14,7 @@ class SiteController extends Controller
     public function indexAction(): View
     {
         $banners = Banner::all()->sortBy('order');
-        $products = ProductRecommendation
-            ::join("products", "products.id", "=", "product_recommendations.product_id")
-            ->where("product_recommendations.enabled", "=", true)
-            ->orderBy("product_recommendations.order")
-            ->select("products.*")
-            ->get();
-        foreach($products as $product){
-            $product['image'] = ProductImage
-                ::where("product_id", "=", $product['id'])
-                ->where("main", "=", true)
-                ->select("image")
-                ->first()["image"];
-        }
+        $products = ProductRecommendation::getHomeProducts();
         foreach($banners as $banner){
             $banner['text'] = Blade::render($banner['text']);
         }

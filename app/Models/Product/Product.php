@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class Product extends Model
@@ -17,7 +18,6 @@ class Product extends Model
         'name',
         'slug',
         'description',
-        'price',
         'enabled',
         'category_id',
         'images'
@@ -35,5 +35,20 @@ class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class);
+    }
+    public function variants(): HasMany
+    {
+        return $this->hasMany(ProductVariant::class);
+    }
+    public function getPricesAttribute(): Collection
+    {
+        return $this->variants->pluck('price');
+    }
+    public function getMainImageAttribute(): ?string
+    {
+        return $this->images
+            ->where("main", true)
+            ->pluck('image')
+            ->first();
     }
 }

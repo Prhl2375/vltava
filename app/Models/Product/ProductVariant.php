@@ -1,19 +1,19 @@
 <?php
-declare(strict_types=1);
 
 namespace App\Models\Product;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ProductImage extends Model
+class ProductVariant extends Model
 {
     protected $fillable = [
+        'name',
         'product_id',
-        'main',
-        'image'
+        'price',
+        'weight',
+        'volume',
     ];
-
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);

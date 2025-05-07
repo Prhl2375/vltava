@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('product_images', function (Blueprint $table) {
-            $table->boolean('main')->default(true);
-            $table->unique(['product_id', 'main']);
+        Schema::table('banners', function (Blueprint $table) {
+            $table->boolean('enabled')->default(true);
         });
     }
 
@@ -22,9 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('product_images', function (Blueprint $table) {
-            $table->dropColumn('main');
-            $table->dropUnique(['product_id', 'main']);
+        Schema::table('banners', function (Blueprint $table) {
+            $table->dropColumn('enabled');
         });
     }
 };

@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('product_images', function (Blueprint $table) {
-            $table->boolean('main')->default(true);
-            $table->unique(['product_id', 'main']);
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn(['price', 'stock']);
         });
     }
 
@@ -22,9 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('product_images', function (Blueprint $table) {
-            $table->dropColumn('main');
-            $table->dropUnique(['product_id', 'main']);
+        Schema::table('products', function (Blueprint $table) {
+            $table->float('price')->nullable();
+            $table->integer('stock')->nullable();
         });
     }
 };
