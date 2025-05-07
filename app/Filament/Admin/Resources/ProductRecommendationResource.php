@@ -13,6 +13,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -46,6 +47,8 @@ class ProductRecommendationResource extends Resource
                     ->label('Product name'),
                 TextColumn::make('product.slug')
                     ->label('Product slug'),
+                IconColumn::make('enabled')
+                    ->boolean()
             ])
             ->filters([
                 //

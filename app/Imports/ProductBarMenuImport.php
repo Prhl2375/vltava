@@ -16,8 +16,9 @@ class ProductBarMenuImport implements ToCollection
             if($row[2]){
                 Product::create([
                     'name' => $row[2],
-                    'price' => preg_replace('/[^\d.]/', '', $row[1]),
                     'description' => $row[3]
+                ])->variants()->create([
+                    'price' => preg_replace('/[^\d.]/', '', $row[1]),
                 ]);
             }
         }

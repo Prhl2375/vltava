@@ -10,9 +10,11 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -38,6 +40,8 @@ class BannerResource extends Resource
                     ->directory('images/banners'),
                 FileUpload::make('desktop_image')
                     ->directory('images/banners'),
+                Toggle::make('enabled')
+                    ->default(true),
             ]);
     }
 
@@ -49,7 +53,9 @@ class BannerResource extends Resource
                 ImageColumn::make('desktop_image'),
                 ImageColumn::make('mobile_image'),
                 TextColumn::make('name'),
-                TextColumn::make('updated_at')
+                TextColumn::make('updated_at'),
+                IconColumn::make('enabled')
+                    ->boolean()
             ])
             ->filters([
                 //

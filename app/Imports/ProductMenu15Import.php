@@ -21,6 +21,7 @@ class ProductMenu15Import implements ToCollection
             if($row[2]){
                 Product::create([
                     'name' => $row[1],
+                ])->variants()->create([
                     'price' => $price,
                 ]);
             }

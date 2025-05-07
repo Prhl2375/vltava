@@ -51,4 +51,16 @@ class ProductRecommendation extends Model implements Sortable
     {
         return $this->belongsTo(Product::class);
     }
+    public function scopeEnabled($q)
+    {
+        return $q->where('enabled', true);
+    }
+    public static function getHomeProducts()
+    {
+        return static::enabled()
+            ->with(['product.images', 'product.variants'])
+            ->orderBy('order')
+            ->get()
+            ->pluck('product');
+    }
 }
