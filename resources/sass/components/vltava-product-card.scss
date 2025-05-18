@@ -35,7 +35,8 @@
 
         &-placeholder {
             @include image-base;
-            background-color: lightgray;
+            background-color: rgba(13, 87, 51, 1);
+            opacity: 30%;
             display: flex;
             color: white;
             font-size: 45px;

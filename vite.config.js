@@ -13,6 +13,9 @@ export default defineConfig({
                 'resources/sass/components/vltava-button.scss',
                 'resources/sass/components/vltava-service.scss',
                 'resources/sass/pages/home.scss',
+                'resources/sass/pages/menu.scss',
+                'resources/sass/menu-layout.scss',
+                'resources/sass/components/vltava-menu-nav.scss',
 
 
                 'resources/js/components/vltava-banner.js',

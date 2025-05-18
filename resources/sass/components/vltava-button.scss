@@ -1,6 +1,10 @@
+@mixin active-style{
+    background-color: rgb(13, 87, 51);
+    outline: 2px solid white;
+    color: white;
+}
+
 .vltava-button {
-    margin-right: 15px;
-    margin-bottom: 5px;
 
 
     .vltava-button-content {
@@ -8,11 +12,22 @@
         border-radius: 5px;
         background: white;
         display: flex;
+        flex: 0 0 auto;
         justify-content: center;
         align-items: center;
         padding: 5px;
         padding-left: 10px;
         padding-right: 10px;
+        outline: 2px solid rgb(13, 87, 51);
+        transition: 0.25s ease;
+
+        &:hover {
+            @include active-style;
+        }
+
+        &.active {
+            @include active-style;
+        }
     }
 
 

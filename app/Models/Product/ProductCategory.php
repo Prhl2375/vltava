@@ -3,15 +3,22 @@ declare(strict_types=1);
 
 namespace App\Models\Product;
 
+use App\Enums\ProductCategoryType;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class ProductCategory extends Model
 {
+    protected $casts = [
+        'type' => ProductCategoryType::class,
+    ];
     protected $fillable = [
         'name',
-        'slug'
+        'slug',
+        'enabled',
+        'type'
     ];
 
     public static function boot()
@@ -24,5 +31,13 @@ class ProductCategory extends Model
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+    public function scopeActiveCategory(Builder $query, ProductCategoryType $categoryType): Builder
+    {
+        $query->where([
+            'enabled' => true,
+            'type' => $categoryType,
+        ]);
+        return $query;
     }
 }

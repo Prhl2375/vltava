@@ -2,14 +2,18 @@
 
 namespace App\Filament\Admin\Resources;
 
+use App\Enums\ProductCategoryType;
 use App\Filament\Admin\Resources\CategoryResource\Pages;
 use App\Filament\Admin\Resources\CategoryResource\RelationManagers;
 use App\Models\Product\ProductCategory;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,7 +30,12 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name'),
-                TextInput::make('slug')
+                TextInput::make('slug'),
+                Toggle::make('enabled')
+                    ->default(true),
+                Select::make('type')
+                    ->enum(ProductCategoryType::class)
+                    ->options(ProductCategoryType::class)
             ]);
     }
 
@@ -35,7 +44,10 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
-                TextColumn::make('slug')
+                TextColumn::make('slug'),
+                IconColumn::make('enabled')
+                    ->boolean(),
+                TextColumn::make('type')
             ])
             ->filters([
                 //

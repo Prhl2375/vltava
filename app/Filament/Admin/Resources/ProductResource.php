@@ -20,14 +20,17 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductResource extends Resource
@@ -120,9 +123,26 @@ class ProductResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
+                BulkAction::make('changeCategory')
+                    ->icon('carbon-category-new-each')
+                    ->form([
+                        Select::make('category_id')
+                            ->relationship('category', 'name')
+                            ->required()
+                    ])
+                    ->action(function (Collection $records, array $data, Component $livewire) {
+                        $records->each(function ($record) use ($data) {
+                            $record->update([
+                                'category_id' => (int)$data['category_id'],
+                            ]);
+                        });
+                        Notification::make()
+                            ->title('Category changed successfully!')
+                            ->success()
+                            ->send();
+                        $livewire->js('window.location.reload()');
+                    }),
             ]);
     }
 

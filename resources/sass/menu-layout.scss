@@ -1,0 +1,14 @@
+@use 'main';
+@use 'abstracts/vars';
+
+.vltava-header{
+    height: vars.$menu-header-height;
+    background: none;
+    backdrop-filter: none;
+    box-shadow: none;
+
+    &__logo{
+        width: 200px;
+        height: 64px;
+    }
+}

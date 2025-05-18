@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ProductCategoryType;
 use App\Models\Banner;
+use App\Models\Product\ProductCategory;
 use App\Models\Product\ProductImage;
 use App\Models\Product\ProductRecommendation;
 use Illuminate\Http\Request;
@@ -11,7 +13,7 @@ use Illuminate\View\View;
 
 class SiteController extends Controller
 {
-    public function indexAction(): View
+    public function home(): View
     {
         $banners = Banner::all()->sortBy('order');
         $products = ProductRecommendation::getHomeProducts();
@@ -19,10 +21,21 @@ class SiteController extends Controller
             $banner['text'] = Blade::render($banner['text']);
         }
         return view('pages.home',
-            [
-                'banners' => $banners,
-                'products' => $products,
-            ]
+            compact('banners', 'products')
         );
+    }
+    public function menu(): View
+    {
+        $categoryTypes = ProductCategoryType::cases();
+        $categories = [];
+        $activeCategory = '';
+        foreach ($categoryTypes as $categoryType) {
+            $category = ProductCategory::activeCategory($categoryType)->get();
+            $categories[$categoryType->name] = $category;
+            if ($categoryType == ProductCategoryType::Menu) {
+                $activeCategory = $category[0];
+            }
+        }
+        return view('pages.menu', compact('categories', 'activeCategory'));
     }
 }
