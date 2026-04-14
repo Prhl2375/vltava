@@ -1,0 +1,17 @@
+{
+    frankenphp
+    admin off
+}
+
+:80 {
+    root * /app/public
+    encode zstd br gzip
+
+    request_body {
+        max_size 2GB
+    }
+
+    route {
+        php_server
+    }
+}

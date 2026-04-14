@@ -1,0 +1,84 @@
+services:
+  php:
+    build:
+      context: ./laravel
+      dockerfile: Dockerfile
+    volumes:
+      - ./laravel:/app:rw
+      - storage_data:/app/storage/app/public
+    environment:
+      - APP_ENV=local
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=mydatabase
+      - DB_USERNAME=myuser
+      - DB_PASSWORD=mypassword
+    networks:
+      - app-network
+    depends_on:
+      - db
+    expose:
+      - "9000"
+    container_name: vltava_laravel
+
+  frontend:
+    container_name: vltava_react
+    build:
+      context: ./react
+      dockerfile: dockerfile
+    volumes:
+      - ./react:/app
+    ports:
+      - "5173:5173"
+    networks:
+      - app-network
+
+  db:
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydatabase
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    container_name: "db"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - storage_data:/var/www/storage/app/public
+    networks:
+      - app-network
+    depends_on:
+      - php
+    container_name: "nginx"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    networks:
+      - app-network
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+    container_name: "pgadmin"
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:
+  storage_data:
