@@ -17,6 +17,7 @@ services:
       - app-network
     depends_on:
       - db
+      - redis
     expose:
       - "9000"
     container_name: vltava_laravel
@@ -46,6 +47,18 @@ services:
     networks:
       - app-network
     container_name: "db"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSRGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    networks:
+      - app-network
 
   nginx:
     image: nginx:latest

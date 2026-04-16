@@ -1,6 +1,10 @@
 {
     frankenphp
     admin off
+    debug
+    log {
+        level DEBUG
+    }
 }
 
 :80 {
