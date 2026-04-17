@@ -28,4 +28,4 @@ RUN composer dump-autoload --optimize \
     && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
-CMD ["sh", "-c", "php artisan migrate --force --seed && frankenphp run --config /etc/caddy/Caddyfile"]
+CMD ["sh", "-c", "php artisan migrate --force --seed && php artisan icons:cache && frankenphp run --config /etc/caddy/Caddyfile"]
