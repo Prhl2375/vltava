@@ -1,10 +1,17 @@
 import { queryOptions } from '@tanstack/react-query'
 import { api } from './client'
 import type {
+  About,
   Banner,
   CategoriesResponse,
   Product,
 } from '#/types'
+
+export const aboutQueryOptions = () =>
+  queryOptions({
+    queryKey: ['about'],
+    queryFn: () => api.get<About>('/about'),
+  })
 
 export const bannersQueryOptions = () =>
   queryOptions({

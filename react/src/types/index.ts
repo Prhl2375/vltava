@@ -1,3 +1,13 @@
+export interface About {
+  name: string
+  address: string
+  phone: string
+  email: string
+  opens_at: string
+  closes_at: string
+  video_guide: string
+}
+
 export interface Banner {
   id: number
   name: string

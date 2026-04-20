@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ProductCategoryType;
+use App\Models\About;
 use App\Models\Banner;
 use App\Models\Product\Product;
 use App\Models\Product\ProductCategory;
@@ -27,6 +28,12 @@ class SiteController extends Controller
             'pages.home',
             compact('banners', 'products')
         );
+    }
+
+    public function about(): JsonResponse
+    {
+        $about = About::getInstance();
+        return response()->json($about);
     }
 
     public function listBanners(): JsonResponse

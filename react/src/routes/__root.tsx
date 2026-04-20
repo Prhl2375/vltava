@@ -10,6 +10,8 @@ import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
 
+import 'leaflet/dist/leaflet.css'
+
 interface MyRouterContext {
   queryClient: QueryClient
 }

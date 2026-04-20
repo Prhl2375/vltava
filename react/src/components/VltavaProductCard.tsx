@@ -88,6 +88,7 @@ interface VltavaProductCardProps {
 export default function VltavaProductCard({
   product,
 }: VltavaProductCardProps) {
+  console.log(product);
   return (
     <CardLink href="#">
       <CardContent>

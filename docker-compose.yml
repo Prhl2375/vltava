@@ -48,7 +48,7 @@ services:
       - app-network
     container_name: "db"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSRGRES_DB}"]
+      test: ["CMD-SHELL", "pg_isready -U myuser"]
       interval: 5s
       timeout: 5s
       retries: 10

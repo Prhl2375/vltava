@@ -6,7 +6,9 @@ import VltavaSeparator from '#/components/VltavaSeparator'
 import VltavaGrid from '#/components/VltavaGrid'
 import VltavaButton from '#/components/VltavaButton'
 import VltavaService from '#/components/VltavaService'
+import VltavaMap from '#/components/VltavaMap'
 import {
+  aboutQueryOptions,
   bannersQueryOptions,
   recommendedProductsQueryOptions,
 } from '#/api/hooks'
@@ -32,6 +34,7 @@ export const Route = createFileRoute('/_public/')({
 function HomePage() {
   const { data: banners = [] } = useQuery(bannersQueryOptions())
   const { data: products = [] } = useQuery(recommendedProductsQueryOptions())
+  const { data: about } = useQuery(aboutQueryOptions())
 
   return (
     <>
@@ -48,6 +51,10 @@ function HomePage() {
           <h3>СЕРВІС</h3>
         </VltavaSeparator>
         <VltavaService />
+        <VltavaSeparator>
+          <h3>ДЕ НАС ЗНАЙТИ</h3>
+        </VltavaSeparator>
+        <VltavaMap about={about} />
         <VltavaSeparator />
       </Container>
     </>

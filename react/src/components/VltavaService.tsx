@@ -58,7 +58,7 @@ const ServiceLink = styled('a')({
 })
 
 const services = [
-  { image: assetUrl('images/service1.png'), label: 'Залишити відгук' },
+  { image: assetUrl('images/service1.png'), label: 'Залишити відгук', link: "https://maps.app.goo.gl/yzJGwPzWPjauMkRx7" },
   { image: assetUrl('images/service2.png'), label: 'Забронювати столик' },
   { image: assetUrl('images/service3.png'), label: 'Співпраця/Вакансії' },
 ]
@@ -67,7 +67,7 @@ export default function VltavaService() {
   return (
     <ServiceWrapper>
       {services.map((service) => (
-        <ServiceLink href="#" key={service.label}>
+        <ServiceLink href={service.link || "#"} key={service.label} target="_blank" rel="noopener noreferrer">
           <ServiceCardContent>
             <ServiceCardImage src={service.image} alt={service.label} />
             <ServiceCardLabel>
